@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload Image</title>
+   <link rel="stylesheet" href="/css/style.css">
+   <script src="/js/jquery-3.2.0.js"></script>
+  </head>
+  <body>
+    <div id="form-main">
+      <div id="form-div">
+        <form id="uploadDetail" 
+        method="POST" action="/upload" class="form" >
+       
+          <div class="preview text-center">
+             
+            <img
+            id="imgfile"
+              name="imm"
+              class="preview-img"
+              src="/img/contact.svg"
+              alt="Preview Image"
+              width="150"
+              height="150"
+            /> 
+           
+            <p style="font-family: inherit;">Select Image: </p>
+            <div class="browse-button">
+              <!-- <i id="name" class="fa fa-pencil-alt"></i> -->
+              <input
+                class="browse-input"
+                type="file"
+                onchange="readURL(this);"
+                required
+                name="upload"
+                id="uploadedFile"
+              />
+            </div>
+           
+            <span class="Error"></span>
+          </div>
+          <p class="name">
+            <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name" />
+          </p>
+          
+          <p class="email">
+            <input name="email" type="email" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
+          </p>
+          
+          <p class="address">
+            <input name="address" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Address" id="address" />
+          </p>  
+
+          <p class="feedback">
+            <textarea name="feedback" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Feedback"></textarea>
+          </p>
+          
+          
+          <div class="submit">
+            <input type="submit" value="SEND" id="button-blue"/>
+            <div class="ease"></div>
+          </div>
+        </form>
+      </div>
+  </body>
+  <script>function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imgfile')
+                .attr('src', e.target.result)
+                .width(150)
+                .height(150);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}</script>
+<script src="/js/formdata.js"></script>
+</html>
+ 
